@@ -10,7 +10,7 @@ namespace WebAppMobileRecord.Data
         public int Id { get; set; }
         public string Number { get; set; }
         public DateTime AddedDate { get; set; }
-        public DateTime DeactivatedDate { get; set; }
+        public DateTime? DeactivatedDate { get; set; }
 
         public int OSVersionId { get; set; }
 
@@ -28,5 +28,7 @@ namespace WebAppMobileRecord.Data
 
         public int VendorId { get; set; }
         public Vendor Vendor { get; set; }
+
+        public List<AssignMobileIdentity> AssignMobileIdentities { get; set; }
     }
 }

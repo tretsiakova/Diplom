@@ -10,5 +10,8 @@ namespace WebAppMobileRecord.Data
         public int Id {get;set;}
 
         public string VendorName { get; set; }
+
+
+        public List<Mobile> Mobiles { get; set; }
     }
 }

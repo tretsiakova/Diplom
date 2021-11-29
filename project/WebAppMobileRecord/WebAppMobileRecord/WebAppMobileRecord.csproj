@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20211121182300_AddSchema.cs" />
+    <Compile Remove="Data\Migrations\20211121182300_AddSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211121183136_AddTables.cs" />
+    <Compile Remove="Data\Migrations\20211121183136_AddTables.Designer.cs" />
     <Compile Remove="Data\Migrations\20211129180726_test.cs" />
     <Compile Remove="Data\Migrations\20211129180726_test.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211129184348_id.cs" />
+    <Compile Remove="Data\Migrations\20211129184348_id.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211129195756_Update.cs" />
+    <Compile Remove="Data\Migrations\20211129195756_Update.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211129200053_Update.cs" />
+    <Compile Remove="Data\Migrations\20211129200053_Update.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

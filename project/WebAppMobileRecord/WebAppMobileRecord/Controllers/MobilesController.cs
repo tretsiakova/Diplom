@@ -21,7 +21,7 @@ namespace WebAppMobileRecord.Controllers
         // GET: Mobiles
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Mobiles.Include(m => m.MobileStatus).Include(m => m.MobileType).Include(m => m.OSVersion).Include(m => m.Vendor);
+            var applicationDbContext = _context.Mobiles.Include(m => m.MobileStatus).Include(m => m.MobileType).Include(m => m.OSVersion).ThenInclude(m=>m.OSType).Include(m => m.Vendor);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -50,10 +50,10 @@ namespace WebAppMobileRecord.Controllers
         // GET: Mobiles/Create
         public IActionResult Create()
         {
-            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "Id");
-            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "Id");
-            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Id");
-            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "Id");
+            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "StatusName");
+            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "TypeName");
+            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Version");
+            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "VendorName");
             return View();
         }
 
@@ -70,10 +70,10 @@ namespace WebAppMobileRecord.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "Id", mobile.MobileStatusId);
-            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "Id", mobile.MobileTypeId);
-            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Id", mobile.OSVersionId);
-            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "Id", mobile.VendorId);
+            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "StatusName", mobile.MobileStatusId);
+            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "TypeName", mobile.MobileTypeId);
+            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Version", mobile.OSVersionId);
+            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "VendorName", mobile.VendorId);
             return View(mobile);
         }
 
@@ -90,10 +90,10 @@ namespace WebAppMobileRecord.Controllers
             {
                 return NotFound();
             }
-            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "Id", mobile.MobileStatusId);
-            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "Id", mobile.MobileTypeId);
-            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Id", mobile.OSVersionId);
-            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "Id", mobile.VendorId);
+            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "StatusName", mobile.MobileStatusId);
+            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "TypeName", mobile.MobileTypeId);
+            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Version", mobile.OSVersionId);
+            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "VendorName", mobile.VendorId);
             return View(mobile);
         }
 
@@ -129,10 +129,10 @@ namespace WebAppMobileRecord.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "Id", mobile.MobileStatusId);
-            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "Id", mobile.MobileTypeId);
-            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Id", mobile.OSVersionId);
-            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "Id", mobile.VendorId);
+            ViewData["MobileStatusId"] = new SelectList(_context.MobileStatuses, "Id", "StatusName", mobile.MobileStatusId);
+            ViewData["MobileTypeId"] = new SelectList(_context.MobileTypes, "Id", "TypeName", mobile.MobileTypeId);
+            ViewData["OSVersionId"] = new SelectList(_context.OSVersions, "Id", "Version", mobile.OSVersionId);
+            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "VendorName", mobile.VendorId);
             return View(mobile);
         }
 

@@ -47,7 +47,7 @@ namespace WebAppMobileRecord.Controllers
         // GET: OSVersions/Create
         public IActionResult Create()
         {
-            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "Id");
+            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "OSTypeName");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace WebAppMobileRecord.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "Id", oSVersion.OSTypeId);
+            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "OSTypeName", oSVersion.OSTypeId);
             return View(oSVersion);
         }
 
@@ -81,7 +81,7 @@ namespace WebAppMobileRecord.Controllers
             {
                 return NotFound();
             }
-            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "Id", oSVersion.OSTypeId);
+            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "OSTypeName", oSVersion.OSTypeId);
             return View(oSVersion);
         }
 
@@ -117,7 +117,7 @@ namespace WebAppMobileRecord.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "Id", oSVersion.OSTypeId);
+            ViewData["OSTypeId"] = new SelectList(_context.OSTypes, "Id", "OSTypeName", oSVersion.OSTypeId);
             return View(oSVersion);
         }
 

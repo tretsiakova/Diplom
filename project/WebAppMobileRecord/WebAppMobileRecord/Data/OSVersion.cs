@@ -13,5 +13,8 @@ namespace WebAppMobileRecord.Data
 
         public int OSTypeId { get; set; }
         public OSType OSType { get; set; }
+
+
+        public List<Mobile> Mobiles { get; set; }
     }
 }

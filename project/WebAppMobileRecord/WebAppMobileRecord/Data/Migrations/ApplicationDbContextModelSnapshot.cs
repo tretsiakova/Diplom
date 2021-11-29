@@ -70,71 +70,6 @@ namespace WebAppMobileRecord.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -219,32 +154,113 @@ namespace WebAppMobileRecord.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("WebAppMobileRecord.Data.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers");
+                });
+
             modelBuilder.Entity("WebAppMobileRecord.Data.AssignMobileIdentity", b =>
+                {
+                    b.Property<string>("IdentityId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("AssignDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MobileId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UnAssignDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IdentityId");
+
+                    b.HasIndex("MobileId");
+
+                    b.ToTable("AssignMobileIdentities");
+                });
+
+            modelBuilder.Entity("WebAppMobileRecord.Data.Department", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("AssignDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("IdentityId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("MobileId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UnAssignDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentityId");
-
-                    b.HasIndex("MobileId");
-
-                    b.ToTable("AssignMobileIdentities");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("WebAppMobileRecord.Data.Mobile", b =>
@@ -257,7 +273,7 @@ namespace WebAppMobileRecord.Data.Migrations
                     b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DeactivatedDate")
+                    b.Property<DateTime?>("DeactivatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("MobileStatusId")
@@ -379,7 +395,7 @@ namespace WebAppMobileRecord.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("WebAppMobileRecord.Data.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -388,7 +404,7 @@ namespace WebAppMobileRecord.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("WebAppMobileRecord.Data.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -403,7 +419,7 @@ namespace WebAppMobileRecord.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("WebAppMobileRecord.Data.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -412,21 +428,30 @@ namespace WebAppMobileRecord.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("WebAppMobileRecord.Data.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebAppMobileRecord.Data.AppUser", b =>
+                {
+                    b.HasOne("WebAppMobileRecord.Data.Department", "Department")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("DepartmentId");
+                });
+
             modelBuilder.Entity("WebAppMobileRecord.Data.AssignMobileIdentity", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Identity")
-                        .WithMany()
-                        .HasForeignKey("IdentityId");
+                    b.HasOne("WebAppMobileRecord.Data.AppUser", "Identity")
+                        .WithMany("AssignMobileIdentities")
+                        .HasForeignKey("IdentityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WebAppMobileRecord.Data.Mobile", "Mobile")
-                        .WithMany()
+                        .WithMany("AssignMobileIdentities")
                         .HasForeignKey("MobileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -435,25 +460,25 @@ namespace WebAppMobileRecord.Data.Migrations
             modelBuilder.Entity("WebAppMobileRecord.Data.Mobile", b =>
                 {
                     b.HasOne("WebAppMobileRecord.Data.MobileStatus", "MobileStatus")
-                        .WithMany()
+                        .WithMany("Mobiles")
                         .HasForeignKey("MobileStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebAppMobileRecord.Data.MobileType", "MobileType")
-                        .WithMany()
+                        .WithMany("Mobiles")
                         .HasForeignKey("MobileTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebAppMobileRecord.Data.OSVersion", "OSVersion")
-                        .WithMany()
+                        .WithMany("Mobiles")
                         .HasForeignKey("OSVersionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebAppMobileRecord.Data.Vendor", "Vendor")
-                        .WithMany()
+                        .WithMany("Mobiles")
                         .HasForeignKey("VendorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -462,7 +487,7 @@ namespace WebAppMobileRecord.Data.Migrations
             modelBuilder.Entity("WebAppMobileRecord.Data.OSVersion", b =>
                 {
                     b.HasOne("WebAppMobileRecord.Data.OSType", "OSType")
-                        .WithMany()
+                        .WithMany("OsVersions")
                         .HasForeignKey("OSTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

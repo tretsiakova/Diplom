@@ -9,5 +9,8 @@ namespace WebAppMobileRecord.Data
     {
         public int Id { get; set; }
         public string StatusName { get; set; }
+
+
+        public List<Mobile> Mobiles { get; set; }
     }
 }

@@ -9,5 +9,7 @@ namespace WebAppMobileRecord.Data
     {
         public int Id { get; set; }
         public string OSTypeName { get; set; }
+
+        public List<OSVersion> OsVersions { get; set; }
     }
 }

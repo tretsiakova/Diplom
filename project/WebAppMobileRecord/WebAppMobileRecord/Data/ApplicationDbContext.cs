@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebAppMobileRecord.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public DbSet<Mobile> Mobiles { get; set; }
         public DbSet<MobileStatus> MobileStatuses { get; set; }
@@ -15,6 +15,7 @@ namespace WebAppMobileRecord.Data
         public DbSet<OSVersion> OSVersions { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<AssignMobileIdentity> AssignMobileIdentities { get; set; }
+        public DbSet<Department> Departments { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
