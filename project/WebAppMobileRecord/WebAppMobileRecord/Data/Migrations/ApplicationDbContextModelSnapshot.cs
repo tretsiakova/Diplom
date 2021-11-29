@@ -15,7 +15,7 @@ namespace WebAppMobileRecord.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -229,10 +229,7 @@ namespace WebAppMobileRecord.Data.Migrations
                     b.Property<DateTime>("AssignDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdentityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IdentityId1")
+                    b.Property<string>("IdentityId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("MobileId")
@@ -243,7 +240,7 @@ namespace WebAppMobileRecord.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentityId1");
+                    b.HasIndex("IdentityId");
 
                     b.HasIndex("MobileId");
 
@@ -426,7 +423,7 @@ namespace WebAppMobileRecord.Data.Migrations
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Identity")
                         .WithMany()
-                        .HasForeignKey("IdentityId1");
+                        .HasForeignKey("IdentityId");
 
                     b.HasOne("WebAppMobileRecord.Data.Mobile", "Mobile")
                         .WithMany()

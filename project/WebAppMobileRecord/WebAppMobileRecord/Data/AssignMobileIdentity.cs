@@ -14,7 +14,6 @@ namespace WebAppMobileRecord.Data
 
         public DateTime UnAssignDate { get; set; }
 
-        public int IdentityId { get; set; }
         public IdentityUser Identity { get; set; }
 
         public int MobileId { get; set; }
