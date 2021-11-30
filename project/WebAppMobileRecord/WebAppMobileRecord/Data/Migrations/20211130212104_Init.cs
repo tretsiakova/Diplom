@@ -12,6 +12,16 @@ namespace WebAppMobileRecord.Data.Migrations
                 table: "AspNetUsers",
                 nullable: true);
 
+            migrationBuilder.AddColumn<string>(
+                name: "FullName",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "PlaceNumber",
+                table: "AspNetUsers",
+                nullable: true);
+
             migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
@@ -109,7 +119,8 @@ namespace WebAppMobileRecord.Data.Migrations
                     OSVersionId = table.Column<int>(nullable: false),
                     MobileStatusId = table.Column<int>(nullable: false),
                     MobileTypeId = table.Column<int>(nullable: false),
-                    VendorId = table.Column<int>(nullable: false)
+                    VendorId = table.Column<int>(nullable: false),
+                    Comment = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -144,21 +155,22 @@ namespace WebAppMobileRecord.Data.Migrations
                 name: "AssignMobileIdentities",
                 columns: table => new
                 {
-                    IdentityId = table.Column<string>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AssignDate = table.Column<DateTime>(nullable: false),
                     UnAssignDate = table.Column<DateTime>(nullable: true),
+                    IdentityId = table.Column<string>(nullable: true),
                     MobileId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AssignMobileIdentities", x => x.IdentityId);
+                    table.PrimaryKey("PK_AssignMobileIdentities", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AssignMobileIdentities_AspNetUsers_IdentityId",
                         column: x => x.IdentityId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AssignMobileIdentities_Mobiles_MobileId",
                         column: x => x.MobileId,
@@ -171,6 +183,11 @@ namespace WebAppMobileRecord.Data.Migrations
                 name: "IX_AspNetUsers_DepartmentId",
                 table: "AspNetUsers",
                 column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AssignMobileIdentities_IdentityId",
+                table: "AssignMobileIdentities",
+                column: "IdentityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AssignMobileIdentities_MobileId",
@@ -247,6 +264,14 @@ namespace WebAppMobileRecord.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "DepartmentId",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "FullName",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "PlaceNumber",
                 table: "AspNetUsers");
         }
     }

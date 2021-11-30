@@ -72,7 +72,7 @@ namespace WebAppMobileRecord.Controllers
         }
 
         // GET: AssignMobileIdentities/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
@@ -94,9 +94,9 @@ namespace WebAppMobileRecord.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,AssignDate,UnAssignDate,IdentityId,MobileId")] AssignMobileIdentity assignMobileIdentity)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AssignDate,UnAssignDate,IdentityId,MobileId")] AssignMobileIdentity assignMobileIdentity)
         {
-            if (id != assignMobileIdentity.IdentityId)
+            if (id != assignMobileIdentity.Id)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace WebAppMobileRecord.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AssignMobileIdentityExists(assignMobileIdentity.IdentityId))
+                    if (!AssignMobileIdentityExists(assignMobileIdentity.Id))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace WebAppMobileRecord.Controllers
         }
 
         // GET: AssignMobileIdentities/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace WebAppMobileRecord.Controllers
             var assignMobileIdentity = await _context.AssignMobileIdentities
                 .Include(a => a.Identity)
                 .Include(a => a.Mobile)
-                .FirstOrDefaultAsync(m => m.IdentityId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (assignMobileIdentity == null)
             {
                 return NotFound();
@@ -149,7 +149,7 @@ namespace WebAppMobileRecord.Controllers
         // POST: AssignMobileIdentities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var assignMobileIdentity = await _context.AssignMobileIdentities.FindAsync(id);
             _context.AssignMobileIdentities.Remove(assignMobileIdentity);
@@ -157,9 +157,9 @@ namespace WebAppMobileRecord.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AssignMobileIdentityExists(string id)
+        private bool AssignMobileIdentityExists(int id)
         {
-            return _context.AssignMobileIdentities.Any(e => e.IdentityId == id);
+            return _context.AssignMobileIdentities.Any(e => e.Id == id);
         }
     }
 }

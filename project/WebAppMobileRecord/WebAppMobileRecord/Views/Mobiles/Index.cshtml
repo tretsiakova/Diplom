@@ -1,88 +1,93 @@
 ﻿@model IEnumerable<WebAppMobileRecord.Data.Mobile>
-@using Microsoft.AspNetCore.Identity
-@using WebAppMobileRecord.Data
-@inject SignInManager<AppUser> SignInManager
-@inject UserManager<AppUser> UserManager
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Устройства";
 }
 
-<h1>Index</h1>
+<h1>Устройства</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Добавить новое устройство</a>
+    </p>
+}
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeactivatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OSVersion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MobileStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MobileType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vendor)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OSVersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor)
+        </th>
+        <th>
+            Email Сотрудника
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @{
+                    var OSVersion = $"{item.OSVersion.OSType.OSTypeName}:{item.OSVersion.Version}";
+                    @Html.DisplayFor(modelItem => OSVersion)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileStatus.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileType.TypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+            </td>
+            <td>
+                @{
+                    var result = item.AssignMobileIdentities?.FirstOrDefault(a => a.UnAssignDate == null)?.Identity?.Email ?? "";
+                    @Html.DisplayFor(modelItem => result)
+                }
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Number)
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детальная форма</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
                 </td>
+            }
+            else
+            {
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.AddedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeactivatedDate)
-                </td>
-                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Детальная форма</a>
                     @{
-                        var OSVersion = $"{item.OSVersion.OSType.OSTypeName}:{item.OSVersion.Version}";
-                        @Html.DisplayFor(modelItem => OSVersion)
+                        var userEmail = item.AssignMobileIdentities?.FirstOrDefault(a => a.UnAssignDate == null)?.Identity?.Email;
+                        var isEnableChangeStatus = string.IsNullOrEmpty(userEmail) || User.Identity.Name == userEmail;
+                    }
+                    @if (isEnableChangeStatus)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Изменить статус</a>
                     }
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MobileStatus.StatusName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MobileType.TypeName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Vendor.VendorName)
-                </td>
-                @if (User.IsInRole("admin"))
-                {
-
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    </td>
-                }
-            </tr>
-        }
+            }
+        </tr>
+    }
     </tbody>
 </table>

@@ -10,47 +10,56 @@
     <h4>Mobile</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Number)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Number)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AddedDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AddedDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DeactivatedDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DeactivatedDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.OSVersion)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OSVersion.Id)
+        <dd class="col-sm-10">
+            @{
+                var osVersion = $"{@Model.OSVersion.OSType.OSTypeName}:{@Model.OSVersion.Version}";
+                @Html.DisplayFor(modelItem => osVersion)
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MobileStatus)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MobileStatus.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MobileStatus.StatusName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MobileType)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MobileType.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MobileType.TypeName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Vendor)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Vendor.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor.VendorName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
         </dd>
     </dl>
 </div>

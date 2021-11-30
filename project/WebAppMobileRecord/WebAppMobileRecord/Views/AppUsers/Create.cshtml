@@ -1,4 +1,5 @@
-﻿@model WebAppMobileRecord.Controllers.CreateUserViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@model WebAppMobileRecord.Data.AppUser
 @{
     ViewBag.Title = "Добавление пользователя";
 }
@@ -9,8 +10,27 @@
         <input type="text" asp-for="Email" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="Password" class="control-label">Пароль</label>
-        <input type="password" asp-for="Password" class="form-control" />
+        <label asp-for="FullName" class="control-label"></label>
+        <input type="text" asp-for="FullName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PlaceNumber" class="control-label"></label>
+        <input type="text" asp-for="PlaceNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label name="Password" class="control-label">Пароль</label>
+        <input type="password" name="Password" class="form-control" />
+    </div>
+    
+    <h2>Роли</h2>
+    <div class="form-group">
+        @foreach (IdentityRole role in ViewBag.AllRoles)
+        {
+            <input type="checkbox" name="roles" value="@role.Name"/>@role.Name <br />
+        }
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
     </div>
     <div class="form-group">
         <input type="submit" value="Добавить" class="btn btn-outline-secondary" />

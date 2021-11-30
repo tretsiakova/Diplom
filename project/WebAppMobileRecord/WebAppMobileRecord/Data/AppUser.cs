@@ -9,9 +9,8 @@ namespace WebAppMobileRecord.Data
 {
     public class AppUser: IdentityUser
     {
-        public int? DepartmentId { get; set; }
-        public Department? Department { get; set; }
-
+        public string? FullName { get; set; }
+        public string? PlaceNumber { get; set; }
 
         public List<AssignMobileIdentity> AssignMobileIdentities { get; set; }
         

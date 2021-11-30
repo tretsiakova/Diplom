@@ -18,9 +18,16 @@
     <Compile Remove="Data\Migrations\20211129195756_Update.Designer.cs" />
     <Compile Remove="Data\Migrations\20211129200053_Update.cs" />
     <Compile Remove="Data\Migrations\20211129200053_Update.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211129200246_Init.cs" />
+    <Compile Remove="Data\Migrations\20211129200246_Init.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211130201618_Up2.cs" />
+    <Compile Remove="Data\Migrations\20211130201618_Up2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211130204544_New.cs" />
+    <Compile Remove="Data\Migrations\20211130204544_New.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />

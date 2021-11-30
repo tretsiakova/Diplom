@@ -10,7 +10,7 @@ using WebAppMobileRecord.Data;
 namespace WebAppMobileRecord.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211129200246_Init")]
+    [Migration("20211130212104_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -178,6 +178,9 @@ namespace WebAppMobileRecord.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -200,6 +203,9 @@ namespace WebAppMobileRecord.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("PlaceNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -228,14 +234,16 @@ namespace WebAppMobileRecord.Data.Migrations
 
             modelBuilder.Entity("WebAppMobileRecord.Data.AssignMobileIdentity", b =>
                 {
-                    b.Property<string>("IdentityId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("AssignDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<string>("IdentityId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("MobileId")
                         .HasColumnType("int");
@@ -243,7 +251,9 @@ namespace WebAppMobileRecord.Data.Migrations
                     b.Property<DateTime?>("UnAssignDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("IdentityId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityId");
 
                     b.HasIndex("MobileId");
 
@@ -274,6 +284,9 @@ namespace WebAppMobileRecord.Data.Migrations
 
                     b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeactivatedDate")
                         .HasColumnType("datetime2");
@@ -439,7 +452,7 @@ namespace WebAppMobileRecord.Data.Migrations
 
             modelBuilder.Entity("WebAppMobileRecord.Data.AppUser", b =>
                 {
-                    b.HasOne("WebAppMobileRecord.Data.Department", "Department")
+                    b.HasOne("WebAppMobileRecord.Data.Department", null)
                         .WithMany("AppUsers")
                         .HasForeignKey("DepartmentId");
                 });
@@ -448,9 +461,7 @@ namespace WebAppMobileRecord.Data.Migrations
                 {
                     b.HasOne("WebAppMobileRecord.Data.AppUser", "Identity")
                         .WithMany("AssignMobileIdentities")
-                        .HasForeignKey("IdentityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdentityId");
 
                     b.HasOne("WebAppMobileRecord.Data.Mobile", "Mobile")
                         .WithMany("AssignMobileIdentities")

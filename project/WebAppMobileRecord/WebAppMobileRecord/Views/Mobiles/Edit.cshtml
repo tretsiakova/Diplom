@@ -2,7 +2,9 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var isAdmin = User.IsInRole("Admin");
 }
+
 
 <h1>Edit</h1>
 
@@ -13,41 +15,74 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Number" class="control-label"></label>
-                <input asp-for="Number" class="form-control" />
-                <span asp-validation-for="Number" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddedDate" class="control-label"></label>
-                <input asp-for="AddedDate" class="form-control" />
-                <span asp-validation-for="AddedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeactivatedDate" class="control-label"></label>
-                <input asp-for="DeactivatedDate" class="form-control" />
-                <span asp-validation-for="DeactivatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OSVersionId" class="control-label"></label>
-                <select asp-for="OSVersionId" class="form-control" asp-items="ViewBag.OSVersionId"></select>
-                <span asp-validation-for="OSVersionId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MobileStatusId" class="control-label"></label>
-                <select asp-for="MobileStatusId" class="form-control" asp-items="ViewBag.MobileStatusId"></select>
-                <span asp-validation-for="MobileStatusId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MobileTypeId" class="control-label"></label>
-                <select asp-for="MobileTypeId" class="form-control" asp-items="ViewBag.MobileTypeId"></select>
-                <span asp-validation-for="MobileTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VendorId" class="control-label"></label>
-                <select asp-for="VendorId" class="form-control" asp-items="ViewBag.VendorId"></select>
-                <span asp-validation-for="VendorId" class="text-danger"></span>
-            </div>
+            @if (isAdmin)
+            {
+                <div class="form-group">
+                    <label asp-for="Number" class="control-label"></label>
+                    <input asp-for="Number" class="form-control" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddedDate" class="control-label"></label>
+                    <input asp-for="AddedDate" class="form-control" type="date" />
+                    <span asp-validation-for="AddedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeactivatedDate" class="control-label"></label>
+                    <input asp-for="DeactivatedDate" class="form-control" type="date" />
+                    <span asp-validation-for="DeactivatedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OSVersion" class="control-label"></label>
+                    <select asp-for="OSVersionId" class="form-control" asp-items="ViewBag.OSVersionId"></select>
+                    <span asp-validation-for="OSVersionId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MobileStatus" class="control-label"></label>
+                    <select asp-for="MobileStatusId" class="form-control" asp-items="ViewBag.MobileStatusId"></select>
+                    <span asp-validation-for="MobileStatusId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="UserId" class="control-label">Сотрудник</label>
+                    <select id="UserId" name="UserId" class="form-control" asp-items="ViewBag.Users"></select>
+                    <span id="UserId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MobileType" class="control-label"></label>
+                    <select asp-for="MobileTypeId" class="form-control" asp-items="ViewBag.MobileTypeId"></select>
+                    <span asp-validation-for="MobileTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Vendor" class="control-label"></label>
+                    <select asp-for="VendorId" class="form-control" asp-items="ViewBag.VendorId"></select>
+                    <span asp-validation-for="VendorId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Comment" class="control-label"></label>
+                    <input asp-for="Comment" class="form-control" />
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+            }
+            else
+            {
+                
+                <input type="hidden" asp-for="Number" />
+                <input type="hidden" asp-for="OSVersionId" />
+                <input type="hidden" asp-for="MobileTypeId" />
+                <input type="hidden" asp-for="VendorId" />
+                <div class="form-group">
+                    <label asp-for="MobileStatus" class="control-label"></label>
+                    <select asp-for="MobileStatusId" class="form-control" asp-items="ViewBag.MobileStatusId"></select>
+                    <span asp-validation-for="MobileStatusId" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Comment" class="control-label"></label>
+                    <input asp-for="Comment" class="form-control" />
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+            }
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

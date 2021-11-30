@@ -10,17 +10,18 @@ namespace WebAppMobileRecord.Data
 {
     public class AssignMobileIdentity
     {
+
+        [Key]
         public int Id { get; set; }
         
         public DateTime AssignDate { get; set; }
 
         public DateTime? UnAssignDate { get; set; }
 
-        [Key]
         public string IdentityId { get; set; }
 
         [ForeignKey("IdentityId")]
-        public virtual AppUser Identity { get; set; }
+        public AppUser Identity { get; set; }
 
         public int MobileId { get; set; }
 
