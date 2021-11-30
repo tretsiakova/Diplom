@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<WebAppMobileRecord.Data.Mobile>
-
+@using Microsoft.AspNetCore.Identity
+@using WebAppMobileRecord.Data
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 @{
     ViewData["Title"] = "Index";
 }
@@ -37,38 +40,49 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeactivatedDate)
-            </td>
-            <td>
-                @{
-                    var OSVersion = $"{item.OSVersion.OSType.OSTypeName}:{item.OSVersion.Version}";
-                    @Html.DisplayFor(modelItem => OSVersion)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeactivatedDate)
+                </td>
+                <td>
+                    @{
+                        var OSVersion = $"{item.OSVersion.OSType.OSTypeName}:{item.OSVersion.Version}";
+                        @Html.DisplayFor(modelItem => OSVersion)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileStatus.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileType.TypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+                </td>
+                @if (User.IsInRole("admin"))
+                {
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
                 }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MobileStatus.StatusName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MobileType.TypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vendor.VendorName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                else
+                {
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>
