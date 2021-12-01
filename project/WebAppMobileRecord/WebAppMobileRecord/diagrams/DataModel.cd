@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WebAppMobileRecord.Data.Migrations.CreateIdentitySchema">
+    <Position X="2" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Data\Migrations\00000000000000_CreateIdentitySchema.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.Migrations.Init">
+    <Position X="5.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Data\Migrations\20211130212104_Init.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.Migrations.ApplicationDbContextModelSnapshot">
+    <Position X="3.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Data\Migrations\ApplicationDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.ApplicationDbContext">
+    <Position X="2" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAQAAAAAAAAAALAAAAAAAAIAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>Data\ApplicationDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.AppUser">
+    <Position X="5.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAQAACAAAAAA=</HashCode>
+      <FileName>Data\AppUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.AssignMobileIdentity">
+    <Position X="7.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAAAAAAEAAAAABAAAAAgACAAEAAAAAAAAA=</HashCode>
+      <FileName>Data\AssignMobileIdentity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.Department">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Department.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.Mobile">
+    <Position X="7.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAREIAAAQAIAAAAABACQgAAAAKAAA=</HashCode>
+      <FileName>Data\Mobile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.MobileStatus">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\MobileStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.MobileType">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\MobileType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.OSType">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAACAAAAA=</HashCode>
+      <FileName>Data\OSType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.OSVersion">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAADABAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\OSVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Data.Vendor">
+    <Position X="2" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Vendor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WebAppMobileRecord.Controllers.AppUsersController">
+    <Position X="2.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAgAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AppUsersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.CreateUserViewModel">
+    <Position X="7.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\AppUsersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.EditUserViewModel">
+    <Position X="2.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAEAAAAAAAAAgAAAAACAAAAAA=</HashCode>
+      <FileName>Controllers\AppUsersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.AssignMobileIdentitiesController">
+    <Position X="4" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAABBACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AssignMobileIdentitiesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.HomeController">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAgBQAAAAAAAAAgIAAAAQAAAAEQAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.MobilesController">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAABBACAAAAAAAAAAAEAAEACAAEAAAACAAA=</HashCode>
+      <FileName>Controllers\MobilesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.MobileStatusController">
+    <Position X="7.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABBACAAAAAAIAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\MobileStatusController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.MobileTypesController">
+    <Position X="2.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABBACAAAAAAAAAAAEAAEACAAEAAAACAAA=</HashCode>
+      <FileName>Controllers\MobileTypesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.OSTypesController">
+    <Position X="4" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABBACAAAAAAAACAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\OSTypesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.OSVersionsController">
+    <Position X="5.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABBACAAAAAAAAAAAEAAEACACEAAAAAAAA=</HashCode>
+      <FileName>Controllers\OSVersionsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.RolesController">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACABAAAAAAAAAAAAAAAAAAgAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\RolesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.ChangeRoleViewModel">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAgAAAAAAAgAAAAACAAAAAA=</HashCode>
+      <FileName>Controllers\RolesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebAppMobileRecord.Controllers.VendorsController">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQABBACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\VendorsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
