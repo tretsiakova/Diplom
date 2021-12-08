@@ -8,17 +8,25 @@
 </p>
 
 <table class="table table-striped">
-    @foreach (var role in Model)
-    {
+    <thead>
         <tr>
-            <td>@role.Name</td>
-            <td>
-                <form asp-action="Delete" asp-route-id="@role.Id" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger">
-                        Удалить
-                    </button>
-                </form>
-            </td>
+            <th>
+                Наименование
+            </th>
+            <th>
+            </th>
         </tr>
-    }
+    </thead>
+    <tbody>
+
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@role.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
