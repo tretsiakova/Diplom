@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Mobile.Id)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdentityId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdentityId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdentityId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdentityId">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.IdentityId">Детальная форма</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdentityId">Удалить</a>
             </td>
         </tr>
 }

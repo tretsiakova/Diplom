@@ -1,14 +1,11 @@
 ﻿@model WebAppMobileRecord.Data.Mobile
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Устройство";
     var isAdmin = User.IsInRole("Admin");
 }
 
-
-<h1>Edit</h1>
-
-<h4>Mobile</h4>
+<h4>Устройство</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -84,14 +81,14 @@
                 </div>
             }
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Вернуться к списку</a>
 </div>
 
 @section Scripts {
