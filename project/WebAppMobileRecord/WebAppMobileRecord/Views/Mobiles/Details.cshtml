@@ -42,6 +42,35 @@
             @Html.DisplayFor(model => model.MobileStatus.StatusName)
         </dd>
         <dt class="col-sm-2">
+            Email Сотрудника
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var result = Model.AssignMobileIdentities?.FirstOrDefault(a => a.UnAssignDate == null)?.Identity?.Email ?? "";
+                @Html.DisplayFor(modelItem => result)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            ФИО Сотрудника
+        </dt>
+        <dd class="col-sm-10">
+
+            @{
+                var resultFullName = Model.AssignMobileIdentities?.FirstOrDefault(a => a.UnAssignDate == null)?.Identity?.FullName ?? "";
+                @Html.DisplayFor(modelItem => resultFullName)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            № Места Сотрудника
+        </dt>
+        <dd class="col-sm-10">
+
+            @{
+                var resultPlace = Model.AssignMobileIdentities?.FirstOrDefault(a => a.UnAssignDate == null)?.Identity?.PlaceNumber ?? "";
+                @Html.DisplayFor(modelItem => resultPlace)
+            }
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MobileType)
         </dt>
         <dd class="col-sm-10">

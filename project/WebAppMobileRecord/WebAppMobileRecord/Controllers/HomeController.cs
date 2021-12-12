@@ -55,7 +55,7 @@ namespace WebAppMobileRecord.Controllers
         public async Task Initialize()
         {
 
-            string[] roles = new string[] { "Admin", "User" };
+            string[] roles = new string[] { "Администратор", "Пользователь" };
 
             foreach (string role in roles)
             {
@@ -71,6 +71,7 @@ namespace WebAppMobileRecord.Controllers
             {
                 Email = "admin@admin.com",
                 UserName = "admin@admin.com",
+                FullName = "Администратор",
                 NormalizedUserName = "ADMIN",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,

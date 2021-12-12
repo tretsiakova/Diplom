@@ -9,7 +9,7 @@ using WebAppMobileRecord.Data;
 
 namespace WebAppMobileRecord.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Администратор")]
     public class AppUsersController : Controller
     {
         UserManager<AppUser> _userManager;

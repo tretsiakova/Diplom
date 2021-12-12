@@ -6,7 +6,7 @@
 
 <h1>Устройства</h1>
 
-@if (User.IsInRole("Admin"))
+@if (User.IsInRole("Администратор"))
 {
     <p>
         <a asp-action="Create">Добавить новое устройство</a>
@@ -14,27 +14,34 @@
 }
 <table class="table table-striped">
     <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OSVersion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MobileStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MobileType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vendor)
-        </th>
-        <th>
-            Email Сотрудника
-        </th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OSVersion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vendor)
+            </th>
+            <th>
+                Email Сотрудника
+            </th>
+
+            <th>
+                ФИО Сотрудника
+            </th>
+            <th>
+                № Места Сотрудника
+            </th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
     @foreach (var item in Model)
@@ -64,7 +71,19 @@
                     @Html.DisplayFor(modelItem => result)
                 }
             </td>
-            @if (User.IsInRole("Admin"))
+            <td>
+                @{
+                    var resultFullName = item.AssignMobileIdentities?.FirstOrDefault(a => a.UnAssignDate == null)?.Identity?.FullName ?? "";
+                    @Html.DisplayFor(modelItem => resultFullName)
+                }
+            </td>
+            <td>
+                @{
+                    var resultPlace = item.AssignMobileIdentities?.FirstOrDefault(a => a.UnAssignDate == null)?.Identity?.PlaceNumber ?? "";
+                    @Html.DisplayFor(modelItem => resultPlace)
+                }
+            </td>
+            @if (User.IsInRole("Администратор"))
             {
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |

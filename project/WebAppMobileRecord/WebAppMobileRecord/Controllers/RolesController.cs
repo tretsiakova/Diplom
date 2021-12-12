@@ -4,10 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using WebAppMobileRecord.Data;
 
 namespace WebAppMobileRecord.Controllers
 {
+
+    [Authorize(Roles = "Администратор")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
@@ -41,18 +44,17 @@ namespace WebAppMobileRecord.Controllers
             return View(name);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Delete(string id)
+        [HttpGet, ActionName("Delete")]
+        public async Task<IActionResult> Delete([FromQuery]string name)
         {
-            IdentityRole role = await _roleManager.FindByIdAsync(id);
+            IdentityRole role = await _roleManager.FindByNameAsync(name);
             if (role != null)
             {
                 IdentityResult result = await _roleManager.DeleteAsync(role);
             }
             return RedirectToAction("Index");
         }
-
-        public IActionResult UserList() => View(_userManager.Users.ToList());
+        
 
         public async Task<IActionResult> Edit(string userId)
         {
