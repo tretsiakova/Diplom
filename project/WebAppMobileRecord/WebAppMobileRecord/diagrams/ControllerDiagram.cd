@@ -7,8 +7,8 @@
       <FileName>Controllers\AppUsersController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_roleManager" />
       <Field Name="_userManager" />
+      <Field Name="_roleManager" />
     </ShowAsAssociation>
   </Class>
   <Class Name="WebAppMobileRecord.Controllers.CreateUserViewModel">
@@ -42,10 +42,10 @@
       <FileName>Controllers\HomeController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_context" />
       <Field Name="_logger" />
-      <Field Name="_roleManager" />
       <Field Name="_userManager" />
+      <Field Name="_context" />
+      <Field Name="_roleManager" />
     </ShowAsAssociation>
   </Class>
   <Class Name="WebAppMobileRecord.Controllers.MobilesController">
