@@ -14,11 +14,13 @@ namespace WebAppMobileRecord.Controllers
     {
         UserManager<AppUser> _userManager;
         RoleManager<IdentityRole> _roleManager;
+        readonly ApplicationDbContext _context;
 
-        public AppUsersController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+        public AppUsersController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, ApplicationDbContext context)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _context = context;
         }
 
         public IActionResult Index() => View(_userManager.Users.ToList());
@@ -106,12 +108,19 @@ namespace WebAppMobileRecord.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult> Delete(string id)
         {
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user != null)
             {
+                var assignes = _context.AssignMobileIdentities.Where(x => x.IdentityId == id).ToList();
+                foreach (var item in assignes)
+                {
+                    item.IdentityId = null;
+                }
+                _context.AssignMobileIdentities.UpdateRange(assignes);
+                await _context.SaveChangesAsync();
                 IdentityResult result = await _userManager.DeleteAsync(user);
             }
 

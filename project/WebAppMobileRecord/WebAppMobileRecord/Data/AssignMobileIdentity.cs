@@ -23,11 +23,11 @@ namespace WebAppMobileRecord.Data
         public DateTime? UnAssignDate { get; set; }
 
         [DisplayName("Сотрудник")]
-        public string IdentityId { get; set; }
+        public string? IdentityId { get; set; }
 
         [ForeignKey("IdentityId")]
         [DisplayName("Сотрудник")]
-        public AppUser Identity { get; set; }
+        public AppUser? Identity { get; set; }
 
         [DisplayName("Устройство")]
         public int MobileId { get; set; }
